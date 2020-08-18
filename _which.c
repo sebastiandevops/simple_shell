@@ -11,12 +11,13 @@
  * @av: argument vector.
  * Return: Always 0.
  */
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
 	char *dup, *s, *p, *j;
 	struct stat st;
 	int i;
 
+	(void)env;
 	(void)ac;
 	if (ac < 2)
 	{
