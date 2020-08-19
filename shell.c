@@ -13,7 +13,7 @@
 int main(void)
 {
 	int bytes_read;
-	size_t size;
+	size_t size = 0;
 	char *text;
 	char *argv[] = {NULL, NULL};
 
@@ -23,7 +23,10 @@ int main(void)
 		text = (char *) malloc(size);
 		bytes_read = getline(&text, &size, stdin);
 		if (bytes_read == EOF)
-			exit(0);
+		{
+			free(text);
+			exit(-1);
+		}
 		if (bytes_read == -1)
 		{
 			puts("ERROR!");
@@ -37,11 +40,14 @@ int main(void)
 			argv[0] = text;
 			if (execve(argv[0], argv, NULL) == -1)
 			{
-				perror("Error:");
+				perror("Error");
+
 			}
-			exit(0);
+			kill(getpid(), 0);
 		}
 		wait(NULL);
+		free(text);
 	}
+	free(text);
 	return (0);
 }
