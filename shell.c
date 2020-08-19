@@ -16,10 +16,11 @@ int main(void)
 	size_t size = 0;
 	char *text;
 	char *argv[] = {NULL, NULL};
+	char *prompt = "$";
 
 	while (1)
 	{
-		printf("#cisfun$ ");
+		write(1, prompt, 1);
 		text = (char *) malloc(size);
 		bytes_read = getline(&text, &size, stdin);
 		if (bytes_read == EOF)
