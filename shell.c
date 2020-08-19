@@ -44,7 +44,7 @@ int main(void)
 				perror("Error");
 
 			}
-			kill(getpid(), 0);
+			exit(-1);
 		}
 		wait(NULL);
 		free(text);
