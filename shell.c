@@ -23,7 +23,7 @@ int main(void)
 		text = (char *) malloc(size);
 		bytes_read = getline(&text, &size, stdin);
 		if (bytes_read == EOF)
-			exit (0);
+			exit(0);
 		if (bytes_read == -1)
 		{
 			puts("ERROR!");

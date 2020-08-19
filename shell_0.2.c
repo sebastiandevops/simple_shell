@@ -6,7 +6,7 @@
 #include <string.h>
 
 /**
- * main - basic shell emulation.
+ * main - basic shell_0.2 emulation.
  *
  *
  * Return: 0 on succes.

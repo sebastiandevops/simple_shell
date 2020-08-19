@@ -9,6 +9,7 @@
  * main - program that looks for files in the current PATH.
  * @ac: argument counter.
  * @av: argument vector.
+ * @env: envirnment.
  * Return: Always 0.
  */
 int main(int ac, char **av, char **env)
