@@ -14,15 +14,34 @@ The simple shell is a simplified iteration of a command line interpreter.
 - FORMAT [ARGUMENT]...
 .SH OPTIONS
 .I interactive
+Example:
+$ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+$
 and
 .II non-interactive
+Example:
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+/bin/ls
+/bin/ls
+$
+$ cat test_ls_2 | ./hsh
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
  mode. The user may initiate
-./shell
-./shell
+./hsh
+./hsh
 using commands meant to be run by the program.
 .SH SEE ALSO
 printf
 .SH BUGS
 No known bugs.
 .SH AUTHOR
-Sebastian Valencia - Mauricio García
+Sebastian Valencia
