@@ -15,7 +15,7 @@ int free_EOF(char *text)
 }
 
 /**
- * freefree_textNULL - frees NULL.
+ * free_textNULL - frees NULL.
  * @text: file to free.
  *
  * Return: On success 1.
@@ -51,6 +51,7 @@ int freeNewpid(char *text)
 void free_argv(char *argv[])
 {
 	int i = 0;
+
 	while (argv[i])
 	{
 		free(argv[i]);
