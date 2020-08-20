@@ -9,5 +9,9 @@
 #include <sys/stat.h>
 #include <signal.h>
 
+int free_EOF(char *text);
+int free_textNULL(char *text);
+int freeNewpid(char *text);
+void free_argv(char *argv[]);
 
 #endif /* _HOLBERTON_H_ */
