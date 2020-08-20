@@ -9,7 +9,8 @@ int main(void)
 {
 	int bytes_read, status;
 	size_t size = 0;
-	char *text = 0, *argv[] = {NULL, NULL}, *prompt = "\n$ ";
+	char *argv[] = {NULL, NULL, NULL, NULL};
+	char *text = 0, *prompt = "\n$ ";
 	pid_t newpid;
 	struct stat fStat;
 
@@ -28,7 +29,7 @@ int main(void)
 			freeNewpid(text);
 		if (newpid == 0)
 		{
-			argv[0] = text;
+			create_argv(text, argv);
 			if (stat(argv[0], &fStat) == 0)
 				execve(argv[0], argv, NULL);
 			else

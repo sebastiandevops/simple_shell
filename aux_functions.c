@@ -24,7 +24,7 @@ int free_EOF(char *text)
 int free_textNULL(char *text)
 {
 	free(text);
-	exit(EXIT_SUCCESS);
+	exit(0);
 }
 
 /**
@@ -57,4 +57,27 @@ void free_argv(char *argv[])
 		free(argv[i]);
 		++i;
 	}
+}
+
+
+/**
+ * create_argv - function that creates argv.
+ * @s: string (user input).
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+void create_argv(char *s, char **argv)
+{
+	char *p;
+	int i = 0;
+
+	do {
+		p = _strchr(s, ' ');
+		if (p != NULL)
+			p[0] = 0;
+		argv[i] = s;
+		s = p + 1;
+		i++;
+	} while (p != NULL);
 }
