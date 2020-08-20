@@ -1,18 +1,18 @@
 #include "holberton.h"
 /**
  * main - basic shell emulation.
- *
- *
+ * @ac: argument counter.
+ * @av: argument vector.
  * Return: 0 on succes.
  */
-int main(void)
+int main(int ac, char **av)
 {
-	int bytes_read, status;
+	int bytes_read, status, cuenta = 0;
 	size_t size = 0;
-	char *argv[] = {NULL, NULL, NULL, NULL};
-	char *text = 0, *prompt = "\n$ ";
+	char *text = 0, *prompt = "\n$ ", *argv[] = {NULL, NULL, NULL, NULL};
 	pid_t newpid;
 	struct stat fStat;
+	(void)ac;
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, prompt, 3);
@@ -22,18 +22,20 @@ int main(void)
 			free_EOF(text);
 		if (text == NULL)
 			free_textNULL(text);
-		if (text[bytes_read - 1] == '\n')
-			text[bytes_read - 1] = 0;
+		cuenta++;
+		create_argv(text, argv);
 		newpid = fork();
 		if (newpid == -1)
-			freeNewpid(text);
+			freeNewpid();
 		if (newpid == 0)
 		{
-			create_argv(text, argv);
 			if (stat(argv[0], &fStat) == 0)
+			{
 				execve(argv[0], argv, NULL);
+				free(text);
+			}
 			else
-				perror("Error");
+				print_terror(argv, av[0], cuenta, text);
 		}
 		else
 			wait(&status);

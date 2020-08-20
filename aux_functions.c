@@ -9,7 +9,7 @@
  */
 int free_EOF(char *text)
 {
-	write(STDOUT_FILENO, "\n", 1);
+	write(STDOUT_FILENO, "", 1);
 	free(text);
 	exit(0);
 }
@@ -29,16 +29,14 @@ int free_textNULL(char *text)
 
 /**
  * freeNewpid - frees NewPID.
- * @text: file to free.
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int freeNewpid(char *text)
+void freeNewpid(void)
 {
-	write(STDOUT_FILENO, "\n", 1);
-	free(text);
-	exit(0);
+	perror("Error:");
+	exit(-1);
 }
 
 /**
@@ -63,7 +61,7 @@ void free_argv(char *argv[])
 /**
  * create_argv - function that creates argv.
  * @s: string (user input).
- *
+ * @argv: argument vector.
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
@@ -72,6 +70,7 @@ void create_argv(char *s, char **argv)
 	char *p;
 	int i = 0;
 
+	s[_strlen(s) - 1] = '\0';
 	do {
 		p = _strchr(s, ' ');
 		if (p != NULL)
