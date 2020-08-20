@@ -9,13 +9,13 @@ int main(int ac, char **av)
 {
 	int bytes_read, status, cuenta = 0;
 	size_t size = 0;
-	char *text = 0, *prompt = "\n$ ", *argv[] = {NULL, NULL, NULL, NULL};
+	char *text = 0, *prompt = "$ ", *argv[] = {NULL, NULL, NULL, NULL};
 	pid_t newpid;
 	struct stat fStat;
 	(void)ac;
 
 	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, prompt, 3);
+		write(STDOUT_FILENO, prompt, 2);
 	while ((bytes_read = getline(&text, &size, stdin)))
 	{
 		if (bytes_read == EOF)
@@ -41,7 +41,7 @@ int main(int ac, char **av)
 			wait(&status);
 		bytes_read = 0;
 		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, prompt, 3);
+			write(STDOUT_FILENO, prompt, 2);
 	}
 	if (bytes_read == -1)
 		return (EXIT_FAILURE);

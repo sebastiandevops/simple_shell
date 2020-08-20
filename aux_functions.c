@@ -9,7 +9,6 @@
  */
 int free_EOF(char *text)
 {
-	write(STDOUT_FILENO, "", 1);
 	free(text);
 	exit(0);
 }
